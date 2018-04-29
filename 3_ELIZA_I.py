@@ -40,5 +40,3 @@ send_message("I love building chatbots")
 send_message("I love building chatbots")
 
 
-
-
