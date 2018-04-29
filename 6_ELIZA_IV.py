@@ -1,12 +1,10 @@
-# Final Chatbot.
-
 import re
 import random
 
 bot_template = "BOT : {0}"
 user_template = "USER : {0}"
 
-rules = {'i want (.*)': ['What would it mean if you got {0}','Why do you want {0}',
+rules = {'I want (.*)': ['What would it mean if you got {0}','Why do you want {0}',
   "What's stopping you from getting {0}"],
   'do you remember (.*)': ['Did you think I would forget {0}',
   "Why haven't you been able to forget {0}",
@@ -19,22 +17,21 @@ rules = {'i want (.*)': ['What would it mean if you got {0}','Why do you want {0
   'Really--if {0}']
   }
 
-
   # Define match_rule()
 def match_rule(rules, message):
-  response, phrase = "Please follow the instructions, as i am still evolving !", None
-  
-  # Iterate over the rules dictionary
-  for pattern, responses in rules.items():
-    # Create a match object
-    match = re.search(pattern, message.lower())
-    if match is not None:
-      # Choose a random response
-      response = random.choice(responses)
-      if '{0}' in response:
-        phrase = match.group(1)
-  # Return the response and phrase
-  return response, phrase
+	response, phrase = "default", None
+	
+	# Iterate over the rules dictionary
+	for pattern, responses in rules.items():
+		# Create a match object
+		match = re.search(pattern, message)
+		if match is not None:
+			# Choose a random response
+			response = random.choice(responses)
+			if '{0}' in response:
+				phrase = match.group(1)
+	# Return the response and phrase
+	return response, phrase
 
 
 def send_message(message):
@@ -72,7 +69,9 @@ def respond(message):
     return response
 
 # Send the messages
-print("Start your chat with any of these:")
-print("1. i want... \n2. do you remember... \n3. do you think... \n4. if...")
-print("And see the magic")
-send_message(input())
+send_message("do you remember your last birthday")
+send_message("do you think humans should be worried about AI")
+send_message("I want a robot friend")
+send_message("what if you could be anything you wanted")
+
+
