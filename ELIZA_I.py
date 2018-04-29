@@ -1,3 +1,5 @@
+# 3rd
+
 import random
 
 bot_template = "BOT : {0}"
