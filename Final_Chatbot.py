@@ -22,7 +22,7 @@ rules = {'i want (.*)': ['What would it mean if you got {0}','Why do you want {0
 
   # Define match_rule()
 def match_rule(rules, message):
-  response, phrase = "Please follow the instructions, as i am still evolving !", None
+  response, phrase = "Please follow the instructions to ask, as i am still evolving !", None
   
   # Iterate over the rules dictionary
   for pattern, responses in rules.items():
@@ -75,4 +75,8 @@ def respond(message):
 print("Start your chat with any of these:")
 print("1. i want... \n2. do you remember... \n3. do you think... \n4. if...")
 print("And see the magic")
-send_message(input())
+
+count = 0
+for count in range(1,20):
+  send_message(input())
+
